@@ -40,8 +40,9 @@ export default {
             const option = {
                 legend: {},
                 grid: {
-                    top: '6%', // 调整上边距
-                    bottom: '1%', // 调整下边距
+                    left: '3%',
+                    right: '4%',
+                    bottom: '3%',
                     containLabel: true
                 },
                 yAxis: {
@@ -51,58 +52,52 @@ export default {
                 },
                 xAxis: {
                     type: 'category',
-                    data: this.xAxisData,
+                    data: ['L', 'R', 'C'],
+                    splitLine: { show: false },
                     axisTick: {
-                        show: false, // 刻度线
-                    },
-                    axisLine: {
-                        show: false, // 隐藏x轴
-                    },
-                    axisLabel: {
-                        show: true, // 显示刻度标签
-                        rotate: 90, // 旋转刻度标签
-                        verticalAlign: 'middle', // 垂直居中对齐
+                        show: false, // Hide the tick marks
                     },
                 },
                 series: [
                     {
                         type: 'bar',
-                        stack: 'total',
-                        data: this.leftChannelData,
-                        barWidth: '100%',
-                        itemStyle: {
-                            color: '#895423' // 第一个柱图的颜色
-                        }
-                        // label: {show: true},
+                        stack: 'Ad',
+                        barWidth: '30%',
+                        data: [320, 332, 301, 334, 390]
                     },
                     {
                         type: 'bar',
-                        stack: 'total',
-                        data: [120],
-                        itemStyle: {
-                            color: '#513a20' // 第二个柱图的颜色
-                        }
-                        // label: {show: true},
+                        stack: 'Ad',
+                        data: [120, 132, 101, 134, 90]
+                    },
+                    {
+                        type: 'bar',
+                        stack: 'Ad',
+                        data: [220, 182, 191, 234, 290]
+                    },
+                    {
+                        type: 'bar',
+                        stack: 'Ad',
+                        data: [150, 232, 201, 154, 190]
                     },
                 ]
-            };
-
+            }
             this.chart.setOption(option);
-        }
-    },
-    watch: {
-        leftChannelData() {
-            this.updateChart();
         },
-        rightChannelData() {
-            this.updateChart();
+        watch: {
+            leftChannelData() {
+                this.updateChart();
+            },
+            rightChannelData() {
+                this.updateChart();
+            }
+        },
+        beforeDestroy() {
+            window.removeEventListener('resize', this.resizeChart);
+            this.chart.dispose();
         }
-    },
-    beforeDestroy() {
-        window.removeEventListener('resize', this.resizeChart);
-        this.chart.dispose();
     }
-};
+}
 </script>
 
 <style scoped>

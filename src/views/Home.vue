@@ -6,7 +6,7 @@
       <article class="left">
         <!-- 左侧-顶部 -->
         <box class="box" title="input" style="flex: 2; ">
-          <div style="height: 20px; margin-bottom: 10px;">
+          <div style="height: 20px; width: auto; margin-bottom: 10px;">
             <dianping :leftChannelData="leftChannelData1" :rightChannelData="leftChannelData2" />
           </div>
           <div style="height: 20px;">
@@ -16,8 +16,8 @@
         <!-- 左侧-中间 -->
         <box class="box" title="out put" style="flex: 10;" height="55">
           <div class="middle-container">
-            <div style="height: 20px; margin-bottom: 10px;">
-              <dianping-y></dianping-y>
+            <div style="height: 200px; width: 200px; margin-bottom: 10px;">
+              <dianping1></dianping1>
             </div>
           </div>
         </box>
@@ -36,7 +36,7 @@
         <div class="circle-btn" v-for="i in 6">
           <div class="img-wrapper" @click="changeActive(i)">
             <img v-if="right_active === i" :src="require(`../assets/img/right${i}.png`)">
-            <img v-else :src="require(`../assets/img/开锁.png`)">
+            <img v-else :src="require(`../assets/img/right${i}_c.png`)">
           </div>
         </div>
       </article>
@@ -49,7 +49,7 @@ import headerCompenents from '@/components/header-compenents.vue'
 import box from '@/components/box.vue'
 import middleTop from '@/components/middle-top.vue'
 import dianping from '@/components/dianping.vue'
-import dianpingY from '@/components/dianping.vue'
+import dianping1 from '@/components/dianping1.vue'
 export default {
   name: "Home",
   data() {
@@ -66,10 +66,7 @@ export default {
     middleTop,
     box,
     dianping,
-    dianpingY
-  },
-  mounted() {
-    console.log(this.right_active_arr.includes(this.right_active))
+    dianping1
   },
   methods: {
     changeActive(val) {
@@ -131,7 +128,7 @@ export default {
 
       .circle-btn {
         flex: 1;
-
+        cursor: pointer;
         .img-wrapper {
           width: 100%;
           height: 100%;
