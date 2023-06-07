@@ -19,7 +19,8 @@ export default {
     data() {
         return {
             val: 0,
-            colseBtn: true
+            colseBtn: true,
+            isDropdownOpen: true,
         };
     },
     mounted() {

@@ -14,6 +14,7 @@
       };
     },
     methods: {
+        toggleDropdown() {}
     }
   };
   </script>

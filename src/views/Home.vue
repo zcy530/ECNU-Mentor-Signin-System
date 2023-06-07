@@ -54,14 +54,15 @@
           <my-lunbo-btn :list="['Main Array', 'Main Array22']" v-model="luboBtnValue" style="margin-left: 20px"></my-lunbo-btn>
           <my-lunbo-btn :list="['Main Array', 'Main Array22']" v-model="luboBtnValue" style="margin-left: 20px"></my-lunbo-btn>
         </middleTop>
+        <middle-container></middle-container>
       </article>
 
       <!-- 右侧 -->
       <article class="right">
         <div class="circle-btn" v-for="i in 6">
           <div class="img-wrapper" @click="changeActive(i)">
-            <img v-if="right_active === i" :src="require(`../assets/img/right${i}.png`)">
-            <img v-else :src="require(`../assets/img/right${i}_c.png`)">
+            <img v-show="right_active === i" :src="require(`../assets/img/right${i}.png`)">
+            <img v-show="right_active !== i" :src="require(`../assets/img/right${i}_c.png`)">
           </div>
         </div>
       </article>
