@@ -82,7 +82,6 @@ import dianping1 from '@/components/dianping1.vue'
 import dianping2 from '@/components/dianping2.vue'
 import dianping3 from '@/components/dianping3.vue'
 import switchBtn from '../components/switch-btn.vue'
-import leftRightBtn from '../components/left-right-btn.vue'
 import mySelect from '../components/my-select.vue'
 import myButton from '../components/my-button.vue'
 import myLunboBtn from '../components/my-lunbo-btn.vue'
@@ -111,7 +110,6 @@ export default {
     dianping3,
     dianpingBottom,
     switchBtn,
-    leftRightBtn,
     mySelect,
     myButton,
     myLunboBtn,

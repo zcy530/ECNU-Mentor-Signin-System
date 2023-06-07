@@ -1,11 +1,16 @@
 <template>
     <div class="wrapper">
-        1111111111111111111111111111
+        <!-- this.$refs.modelRef.openModal() -->
+        <myModel ref="modelRef">31231231231231321</myModel>
     </div>
 </template>
 
 <script>
+import myModel from './my-model.vue'
 export default {
+    components: {
+        myModel
+    },
 };
 </script>
 
