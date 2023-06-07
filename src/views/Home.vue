@@ -84,6 +84,8 @@ import leftRightBtn from '../components/left-right-btn.vue'
 import mySelect from '../components/my-select.vue'
 import myButton from '../components/my-button.vue'
 import myLunboBtn from '../components/my-lunbo-btn.vue'
+import middleContainer from '../components/middle-container.vue'
+import middleContainer1 from '../components/middle-container.vue'
 export default {
   name: "Home",
   data() {
@@ -110,7 +112,9 @@ export default {
     leftRightBtn,
     mySelect,
     myButton,
-    myLunboBtn
+    myLunboBtn,
+    middleContainer,
+    middleContainer1
   },
   methods: {
     changeActive(val) {
