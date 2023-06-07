@@ -6,18 +6,23 @@ Vue.use(VueRouter);
 
 const routes = [
   {
-    path: "/",
-    name: "Home",
-    component: Home,
+    path: '/',
+    redirect: '/Home/mixer'
   },
   {
-    path: "/2",
-    name: "About",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/About.vue"),
+    path: "/Home",
+    name: "Home",
+    component: Home,
+    children: [
+      {
+        path: '/Home/mixer',
+        component: resolve => require(['../components/middle-container'], resolve),
+      },
+      {
+        path: '/Home/mixer1',
+        component: resolve => require(['../components/middle-container1'], resolve),
+      },
+    ]
   },
 ];
 

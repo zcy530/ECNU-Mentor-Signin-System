@@ -1,6 +1,6 @@
 <template>
-    <div class="select-container">
-      <div class="selected-option" @click="toggleDropdown">
+    <div class="select-container" @click="toggleDropdown">
+      <div class="selected-option">
         <slot></slot>
       </div>
     </div>
@@ -14,7 +14,9 @@
       };
     },
     methods: {
-        toggleDropdown() {}
+        toggleDropdown() {
+            this.$emit('click')
+        }
     }
   };
   </script>

@@ -1,6 +1,6 @@
 <template>
     <div class="wrapper">
-        
+        1111111111111111111111111111
     </div>
 </template>
 
@@ -13,6 +13,5 @@ export default {
 .wrapper {
     width: 100%;
     height: 94%;
-    border: 1px solid #ccc;
 }
 </style>

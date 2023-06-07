@@ -50,11 +50,13 @@
           <my-select v-model="selectedOption">
             <option value="option1">Immersive 5.1.4</option>
           </my-select>
-          <my-button style="margin-left: 20px">Mixer</my-button>
-          <my-lunbo-btn :list="['Main Array', 'Main Array22']" v-model="luboBtnValue" style="margin-left: 20px"></my-lunbo-btn>
-          <my-lunbo-btn :list="['Main Array', 'Main Array22']" v-model="luboBtnValue" style="margin-left: 20px"></my-lunbo-btn>
+          <my-button style="margin-left: 20px" @click="mixerBtn">Mixer</my-button>
+          <my-lunbo-btn :list="['Main Array', 'Main Array22']" v-model="luboBtnValue"
+            style="margin-left: 20px"></my-lunbo-btn>
+          <my-lunbo-btn :list="['Main Array', 'Main Array22']" v-model="luboBtnValue"
+            style="margin-left: 20px"></my-lunbo-btn>
         </middleTop>
-        <middle-container></middle-container>
+        <router-view></router-view>
       </article>
 
       <!-- 右侧 -->
@@ -119,6 +121,17 @@ export default {
   methods: {
     changeActive(val) {
       this.right_active = val
+    },
+    mixerBtn() {
+      // 获取当前路由路径
+      const currentPath = this.$route.path;
+
+      // 判断当前路径，执行相应的跳转
+      if (currentPath === '/Home/mixer1') {
+        this.$router.push('/Home/mixer');
+      } else {
+        this.$router.push('/Home/mixer1');
+      }
     }
   }
 };

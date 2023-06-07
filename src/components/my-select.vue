@@ -78,7 +78,7 @@ export default {
   position: absolute;
   top: 80%;
   left: 0;
-  width: 17.3vw;
+  width: 18.2vw;
   color: #9a9c9d;
   max-height: 200px;
   option {
