@@ -47,7 +47,12 @@
       <!-- 中间 -->
       <article class="middle">
         <middleTop>
-          <left-right-btn></left-right-btn>
+          <my-select v-model="selectedOption">
+            <option value="option1">Immersive 5.1.4</option>
+          </my-select>
+          <my-button style="margin-left: 20px">Mixer</my-button>
+          <my-lunbo-btn :list="['Main Array', 'Main Array22']" v-model="luboBtnValue" style="margin-left: 20px"></my-lunbo-btn>
+          <my-lunbo-btn :list="['Main Array', 'Main Array22']" v-model="luboBtnValue" style="margin-left: 20px"></my-lunbo-btn>
         </middleTop>
       </article>
 
@@ -75,6 +80,9 @@ import dianping2 from '@/components/dianping2.vue'
 import dianping3 from '@/components/dianping3.vue'
 import switchBtn from '../components/switch-btn.vue'
 import leftRightBtn from '../components/left-right-btn.vue'
+import mySelect from '../components/my-select.vue'
+import myButton from '../components/my-button.vue'
+import myLunboBtn from '../components/my-lunbo-btn.vue'
 export default {
   name: "Home",
   data() {
@@ -83,7 +91,9 @@ export default {
       leftChannelData2: [120],
       rightChannelData1: [320],
       rightChannelData2: [120],
-      right_active: 1
+      right_active: 1,
+      selectedOption: '',
+      luboBtnValue: ''
     }
   },
   components: {
@@ -96,7 +106,10 @@ export default {
     dianping3,
     dianpingBottom,
     switchBtn,
-    leftRightBtn
+    leftRightBtn,
+    mySelect,
+    myButton,
+    myLunboBtn
   },
   methods: {
     changeActive(val) {
@@ -192,4 +205,5 @@ export default {
       }
     }
   }
-}</style>
+}
+</style>
