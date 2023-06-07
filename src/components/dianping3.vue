@@ -53,7 +53,7 @@ export default {
                 },
                 xAxis: {
                     type: 'category',
-                    data: ['L', 'R', 'C', 'LFE'],
+                    data: ['Lt', 'Rt', 'Lst', 'Rst'],
                     splitLine: { show: false },
                     lineStyle: {
                         normal: {
@@ -62,7 +62,7 @@ export default {
                     },
                     axisLabel: {
                         textStyle: {
-                            color: '#3f5883', // 设置 x 轴标签颜色
+                            color: '#55966b', // 设置 x 轴标签颜色
                         }
                     },
                     axisTick: {
@@ -70,11 +70,11 @@ export default {
                     },
                 },
                 series: [
-                {
+                    {
                         type: 'bar',
                         stack: 'Ad',
                         barWidth: '30%',
-                        data: [0.5, 0.5, 0.5, 0.5],
+                        data: [0.5, 0.5, 0.5, 0.5, 0.5],
                         itemStyle: {
                             color: '#399e61' // 第一个柱图的颜色
                         }
@@ -82,7 +82,7 @@ export default {
                     {
                         type: 'bar',
                         stack: 'Ad',
-                        data: [0.2, 0.2, 0.2, 0.2],
+                        data: [0.2, 0.2, 0.2, 0.2, 0.5],
                         itemStyle: {
                             color: '#e4dc4d' // 第一个柱图的颜色
                         }

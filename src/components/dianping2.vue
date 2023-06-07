@@ -53,7 +53,7 @@ export default {
                 },
                 xAxis: {
                     type: 'category',
-                    data: ['L', 'R', 'C', 'LFE'],
+                    data: ['Ls', 'Rs', 'Lsr', 'Rsr'],
                     splitLine: { show: false },
                     lineStyle: {
                         normal: {
@@ -62,7 +62,7 @@ export default {
                     },
                     axisLabel: {
                         textStyle: {
-                            color: '#3f5883', // 设置 x 轴标签颜色
+                            color: '#50857b', // 设置 x 轴标签颜色
                         }
                     },
                     axisTick: {

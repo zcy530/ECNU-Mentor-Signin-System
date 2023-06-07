@@ -41,8 +41,8 @@ export default {
                 legend: {},
                 grid: {
                     top: 0,
-                    left: '6%',
-                    right: '1%',
+                    left: '6%', // 调整左边距
+                    right: '1%', // 调整右边距
                     bottom: 0,
                     containLabel: true
                 },
@@ -73,7 +73,7 @@ export default {
                         data: this.leftChannelData,
                         barWidth: '100%',
                         itemStyle: {
-                            color: '#895423' // 第一个柱图的颜色
+                            color: '#43add3' // 第一个柱图的颜色
                         }
                         // label: {show: true},
                     },
@@ -82,7 +82,7 @@ export default {
                         stack: 'total',
                         data: this.rightChannelData,
                         itemStyle: {
-                            color: '#513a20' // 第二个柱图的颜色
+                            color: '#21536c'// 第二个柱图的颜色
                         }
                         // label: {show: true},
                     },

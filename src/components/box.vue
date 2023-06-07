@@ -37,9 +37,6 @@ export default {
     }
 
     .box-container {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
     }
 }
 </style>
