@@ -8,7 +8,10 @@
             <img src="../assets/img/左(1).png" @click="() => { this.val = this.val - 1 }" alt="">
             <span>{{ list[val] }}</span>
             <img src="../assets/img/右(1).png" @click="() => { this.val = this.val + 1 }" alt="">
-            <i class="arrow-icon" :class="{ 'arrow-up': isDropdownOpen, 'arrow-down': !isDropdownOpen }"></i>
+            <i class="arrow-icon" :class="{ 'arrow-up': isDropdownOpen, 'arrow-down': !isDropdownOpen }" @click="toggleDropdown"></i>
+        </div>
+        <div v-if="isDropdownOpen" class="dropdown">
+            <slot></slot>
         </div>
     </div>
 </template>
@@ -20,13 +23,20 @@ export default {
         return {
             val: 0,
             colseBtn: true,
-            isDropdownOpen: true,
+            isDropdownOpen: false,
         };
     },
     mounted() {
         console.log(this.list);
     },
     methods: {
+        toggleDropdown() {
+            this.isDropdownOpen = !this.isDropdownOpen;
+        },
+        selectOption(value) {
+            this.selectedValue = value;
+            this.isDropdownOpen = false;
+        }
     }
 };
 </script>
@@ -75,7 +85,8 @@ img {
     border-top: 5px solid transparent;
     border-bottom: 5px solid transparent;
     border-right: 5px solid #f0f2f4;
-    transform: rotate(-90deg);
+    transform: rotate(-180deg);
+    cursor: pointer; 
     transition: transform 0.3s ease;
 }
 
@@ -92,20 +103,19 @@ img {
 // }
 
 .dropdown {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 200px;
-    color: #fff;
-    max-height: 200px;
-
-    option {
-        width: 89%;
-        padding: 10px;
-        margin-top: 5px;
-        border: 1px solid #525657;
-        background-color: #3d3f41;
-    }
+  position: absolute;
+  top: 80%;
+  left: 0;
+  width: 18.2vw;
+  color: #9a9c9d;
+  max-height: 200px;
+  option {
+    width: 89%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #525657;
+    background-color: #3d3f41;
+  }
 }
 </style>
     

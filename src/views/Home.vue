@@ -51,10 +51,12 @@
             <option value="option1">Immersive 5.1.4</option>
           </my-select>
           <my-button style="margin-left: 20px" @click="mixerBtn">Mixer</my-button>
-          <my-lunbo-btn :list="['Main Array', 'Main Array22']" v-model="luboBtnValue"
-            style="margin-left: 20px"></my-lunbo-btn>
-          <my-lunbo-btn :list="['Main Array', 'Main Array22']" v-model="luboBtnValue"
-            style="margin-left: 20px"></my-lunbo-btn>
+          <my-lunbo-btn :list="['Main Array', 'Main Array22']" v-model="luboBtnValue" style="margin-left: 20px">
+            <option value="option1">Immersive 5.1.4</option>
+          </my-lunbo-btn>
+          <my-lunbo-btn :list="['Main Array', 'Main Array22']" v-model="luboBtnValue" style="margin-left: 20px">
+            <option value="option1">Immersive 5.1.4</option>
+          </my-lunbo-btn>
         </middleTop>
         <router-view></router-view>
       </article>

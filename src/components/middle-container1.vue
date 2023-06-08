@@ -1,15 +1,18 @@
 <template>
     <div class="wrapper">
         <!-- this.$refs.modelRef.openModal() -->
-        <myModel ref="modelRef">31231231231231321</myModel>
+
+        <bottomControl></bottomControl>
     </div>
 </template>
 
 <script>
 import myModel from './my-model.vue'
+import bottomControl from './bottom-control.vue'
 export default {
     components: {
-        myModel
+        myModel,
+        bottomControl
     },
 };
 </script>

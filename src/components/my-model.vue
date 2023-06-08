@@ -1,6 +1,6 @@
 <template>
     <div>
-      <!-- <button @click="openModal">打开模态框</button> -->
+      <button @click="openModal">打开模态框</button>
       <transition name="modal">
         <div class="modal-mask" v-if="isModalOpen">
           <div class="modal-container">
