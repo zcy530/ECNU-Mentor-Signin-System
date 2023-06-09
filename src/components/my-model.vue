@@ -1,6 +1,6 @@
 <template>
     <div>
-      <button @click="openModal">打开模态框</button>
+      <!-- <button @click="openModal">打开模态框</button> -->
       <transition name="modal">
         <div class="modal-mask" v-if="isModalOpen">
           <div class="modal-container">
@@ -32,7 +32,7 @@
   };
   </script>
   
-  <style>
+  <style lang="scss" scoped>
   .modal-mask {
     position: fixed;
     top: 0;
@@ -60,7 +60,7 @@
   
   .close-button {
     position: absolute;
-    bottom: -65px;
+    bottom: -95px;
     width: 40px;
     height: 40px;
     color: #fff;
@@ -72,6 +72,10 @@
   }
   
   .modal-content {
+    img {
+      width: 100%;
+      height: 100%;
+    }
     /* 弹窗内容样式 */
   }
   </style>

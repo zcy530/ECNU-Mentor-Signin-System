@@ -11,6 +11,7 @@
         </div>
         <div class="scale"></div> <!-- 刻度线 -->
         <div class="handle" :style="{ top: handleTop + 'px' }" @mousedown="startDrag"></div>
+        <div class="handle2" :style="{ top: handleTop + 'px' }" @mousedown="startDrag"></div>
         <div class="value">
             <!-- {{ volume }} -->
             {{ title }}
@@ -94,6 +95,11 @@ export default {
     top: 9%;
     width: 20px;
     height: 100%;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .scale {
@@ -116,6 +122,19 @@ export default {
     border-left: 8px solid transparent;
     border-right: 8px solid transparent;
     border-bottom: 18px solid #f4f9f7;
+    cursor: pointer;
+    transform: rotate(9);
+    z-index: 99;
+}
+
+.handle2 {
+    position: absolute;
+    top: 0;
+    left: -18.3%;
+    transform: translate(-50%, -50%) rotate(-90deg);
+    width: 3px;
+    height: 3px;
+    background-color: #e1d08b;
     cursor: pointer;
     transform: rotate(9);
     z-index: 99;

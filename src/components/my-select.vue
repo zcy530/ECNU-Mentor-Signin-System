@@ -81,6 +81,7 @@ export default {
   width: 18.2vw;
   color: #9a9c9d;
   max-height: 200px;
+  z-index: 20;
   option {
     width: 89%;
     padding: 10px;

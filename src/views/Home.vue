@@ -89,6 +89,7 @@ import myButton from '../components/my-button.vue'
 import myLunboBtn from '../components/my-lunbo-btn.vue'
 import middleContainer from '../components/middle-container.vue'
 import middleContainer1 from '../components/middle-container.vue'
+import { mapMutations } from 'vuex' 
 export default {
   name: "Home",
   data() {
@@ -119,8 +120,11 @@ export default {
     middleContainer1
   },
   methods: {
+    ...mapMutations(['rightBtnCheckStatus']),
     changeActive(val) {
       this.right_active = val
+      this.rightBtnCheckStatus({key: val})
+      console.log(this.$store.state.sm);
     },
     mixerBtn() {
       // 获取当前路由路径
