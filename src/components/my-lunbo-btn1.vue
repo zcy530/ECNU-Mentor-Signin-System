@@ -125,7 +125,7 @@ img {
     position: absolute;
     top: 80%;
     left: 0;
-    width: 32.95vw;
+    width: 27.5vw;
     color: #9a9c9d;
     max-height: 200px;
     z-index: 20;

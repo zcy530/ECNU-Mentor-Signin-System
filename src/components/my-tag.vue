@@ -1,5 +1,5 @@
 <template>
-    <div class="wrapper">
+    <div class="wrapper" @click="fun" @wheel="handleWheel($event)">
         <slot></slot>
     </div>
   </template>
@@ -11,6 +11,12 @@
       };
     },
     methods: {
+      fun() {
+        this.$emit('tag-click')
+      },
+      handleWheel(event) {
+        this.$emit('tag-wheel', event)
+      }
     }
   };
   </script>
@@ -23,6 +29,7 @@
     border: 1px solid #6f8194;
     background-color: rgba(41, 50, 54, 0.5);
     color: #7a8fb0;
+    cursor: pointer;
   }
   </style>
   

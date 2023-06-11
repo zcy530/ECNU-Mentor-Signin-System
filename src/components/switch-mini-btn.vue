@@ -1,7 +1,7 @@
 <template>
   <div class="btn-wrapper">
-    <button :class="{ active1: isLeftEnabled }" @click="toggleLeft">S</button>
-    <button :class="{ active: isRightEnabled, active2: LeftStatus&&!isLeftEnabled}" @click="toggleRight">M</button>
+    <button :class="{ active1: S }" @click="toggleLeft">S</button>
+    <button :class="{ active: M, active2: LeftStatus&&!S}" @click="toggleRight">M</button>
   </div>
 </template>
 
@@ -21,24 +21,34 @@ export default {
       default: false
     }
   },
-  created() {
-    this.isLeftEnabled = this.S
-    this.isRightEnabled = this.M
-  },
-  data() {
-    return {
-      isLeftEnabled: false,
-      isRightEnabled: false
-    };
-  },
+  // watch: {
+  //   S(val) {
+  //     this.isLeftEnabled = val
+      
+  //   },
+  //   M(val) {
+  //     this.isRightEnabled = val
+
+  //   }
+  // },
+  // created() {
+  //   this.isLeftEnabled = this.S
+  //   this.isRightEnabled = this.M
+  // },
+  // data() {
+  //   return {
+  //     isLeftEnabled: false,
+  //     isRightEnabled: false
+  //   };
+  // },
   methods: {
     toggleLeft() {
-      this.isLeftEnabled = !this.isLeftEnabled;
-      this.$emit('left-toggle', this.isLeftEnabled);
+      this.S = !this.S;
+      this.$emit('left-toggle', this.S);
     },
     toggleRight() {
-      this.isRightEnabled = !this.isRightEnabled;
-      this.$emit('right-toggle', this.isRightEnabled);
+      this.M = !this.M;
+      this.$emit('right-toggle', this.M);
     }
   }
 };
