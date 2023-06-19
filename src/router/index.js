@@ -7,7 +7,12 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: '/',
-    redirect: '/Home/mixer'
+    redirect: '/Login',
+  },
+  {
+    path: "/Login",
+    name: "Login",
+    component: resolve => require(['../views/Login.vue'], resolve),
   },
   {
     path: "/Home",
@@ -15,13 +20,17 @@ const routes = [
     component: Home,
     children: [
       {
-        path: '/Home/mixer',
-        component: resolve => require(['../components/middle-container'], resolve),
+        path: '/Home/HomeUser',
+        component: resolve => require(['../components/HomeUser'], resolve),
       },
       {
-        path: '/Home/mixer1',
-        component: resolve => require(['../components/middle-container1'], resolve),
+        path: '/Home/Center',
+        component: resolve => require(['../components/UserCenter'], resolve),
       },
+      {
+        path: '/Home/qingjia',
+        component: resolve => require(['../components/qingjia'], resolve),
+      }
     ]
   },
 ];
