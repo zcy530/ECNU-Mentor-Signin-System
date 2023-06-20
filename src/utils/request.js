@@ -51,3 +51,8 @@ export function get(url, params) {
 export function post(url, data) {
   return request.post(url, data);
 }
+
+// 封装 post 方法
+export function put(url, data) {
+  return request.put(url, data);
+}

@@ -4,7 +4,7 @@
             {{ TextDecoder || '无内容' }}
         </h2>
         <div class="course-table">
-            <a-table :columns="columns" :data-source="courseData" class="custom-table">
+            <a-table :columns="columns" :data-source="courseData" row-key="studentId" class="custom-table">
                 <span slot="time_action" slot-scope="text, record">
                     <div>{{ record.startTime }}</div>
                     <div>{{ record.endTime }}</div>
@@ -35,7 +35,7 @@ export default {
                     title: '星期一',
                     dataIndex: 'weekday',
                     width: 200,
-                    key: 'weekday',
+                    key: 'weekday1',
                     customRender: (text, record) => {
                         if (text === 'Monday') {
                             return <div class="course-cell"><div>{record.name}</div><div><span>迟到次数:</span>{record.late}次</div><div><span>请假次数:</span>{record.leave}次</div><div><span>缺勤次数:</span>{record.absent}次</div></div>;
@@ -48,7 +48,7 @@ export default {
                     title: '星期二',
                     dataIndex: 'weekday',
                     width: 200,
-                    key: 'weekday',
+                    key: 'weekday2',
                     customRender: (text, record) => {
                         if (text === 'Tuesday') {
                             return <div class="course-cell"><div>{record.name}</div><div><span>迟到次数:</span>{record.late}次</div><div><span>请假次数:</span>{record.leave}次</div><div><span>缺勤次数:</span>{record.absent}次</div></div>;
@@ -61,7 +61,7 @@ export default {
                     title: '星期三',
                     dataIndex: 'weekday',
                     width: 200,
-                    key: 'weekday',
+                    key: 'weekday3',
                     customRender: (text,record) => {
                         if (text === 'Wednesday') {
                             return <div class="course-cell"><div>{record.name}</div><div><span>迟到次数:</span>{record.late}次</div><div><span>请假次数:</span>{record.leave}次</div><div><span>缺勤次数:</span>{record.absent}次</div></div>;
@@ -74,7 +74,7 @@ export default {
                     title: '星期四',
                     dataIndex: 'weekday',
                     width: 200,
-                    key: 'weekday',
+                    key: 'weekday4',
                     customRender: (text, record) => {
                         if (text === 'Thursday') {
                             return <div class="course-cell"><div>{record.name}</div><div><span>迟到次数:</span>{record.late}次</div><div><span>请假次数:</span>{record.leave}次</div><div><span>缺勤次数:</span>{record.absent}次</div></div>;
@@ -87,7 +87,7 @@ export default {
                     title: '星期五',
                     dataIndex: 'weekday',
                     width: 200,
-                    key: 'weekday',
+                    key: 'weekday5',
                     customRender: (text, record) => {
                         if (text === 'Friday') {
                             return <div class="course-cell"><div>{record.name}</div><div><span>迟到次数:</span>{record.late}次</div><div><span>请假次数:</span>{record.leave}次</div><div><span>缺勤次数:</span>{record.absent}次</div></div>;
@@ -106,14 +106,14 @@ export default {
     mounted() {
         this.instructorId = getLocalStorage('instructorId') || '5101603'
         get(`/office-service/student/info?studentId=${this.instructorId}`).then((res) => {
-            TextDecoder = res.data
+            this.TextDecoder = res.data
         })
         // get(`/account-service/account/studentId/exception?studentId=${this.$route.query.studentId}&term=${this.$route.query.term}`).then((res) => {
         //     res.data
         // this.courseData = res.data
         //     console.log("🚀  res.data:", res.data)
         // })
-        get(`/account-service/account/studentId/exception?studentId=10205101485&term=2023年春季学期`).then((res) => {
+        get(`/account-service/account/studentId/exception?studentId=${this.$route.query.studentId}&term=${this.$route.query.term}`).then((res) => {
             this.courseData = res.data
             console.log("🚀  res.data:", res.data)
         })

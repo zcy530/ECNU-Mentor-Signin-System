@@ -9,9 +9,9 @@
 
 
       <a-select v-model="selectedYear" style="width: 120px;" placeholder="请选择">
-        <a-select-option v-for="item in TuanTi"
-          :value="`${item.classes}&${item.department}&${item.group_id}&${item.instructor_id}&${item.major}&${item.year}`" :key="item.instructor_id">{{
-            item.department }}</a-select-option>
+        <a-select-option v-for="item in TuanTi" :value="item.year">
+          {{ item.year }}
+        </a-select-option>
       </a-select>
 
 
@@ -40,21 +40,10 @@ export default {
     return {
       TuanTi: [],
       instructorId: '',
-      selectedYear: undefined,
-      selectedSemester: undefined,
+      selectedYear: 2020,
+      selectedSemester: '2023年春季学期',
       searchCount: null,
-      dataSource: [
-        {
-          studentId: '1111',
-          name: 'Student',
-          abnormalCount: 8,
-        },
-        {
-          studentId: '2222',
-          name: 'Student',
-          abnormalCount: 3,
-        }
-      ], // Your table data source
+      dataSource: [],
       dataSource1: [],
       columns: [
 
@@ -70,8 +59,8 @@ export default {
         },
         {
           title: '异常次数',
-          dataIndex: 'abnormalCount',
-          key: 'abnormalCount'
+          dataIndex: 'times',
+          key: 'times'
         },
         {
           title: '操作',
@@ -104,13 +93,16 @@ export default {
   },
   methods: {
     xiangqing(record) {
-      console.log("🚀  record:", record)
       this.$router.push({
         path: '/Home/UserCenterDetails',
         query: { studentId: record.studentId, term: this.selectedSemester }
       });
     },
     handleSearch() {
+      get(`/account-service/account/exception/times?instructorId=${5101603}&term=${'2023年春季学期'}&groupId=${124}`).then((res) => {
+        this.dataSource = res.data
+        this.dataSource1 = this.dataSource
+      })
       if (this.searchCount === '') {
         this.dataSource1 = this.dataSource
       } else {
@@ -122,14 +114,23 @@ export default {
         this.dataSource = res.data
         this.dataSource1 = this.dataSource
       })
+    },
+    extractUniqueYears(data) {
+      const years = [];
+      for (let i = 0; i < data.length; i++) {
+        const year = data[i].year;
+        if (!years.includes(year)) {
+          years.push(year);
+        }
+      }
+      return years.map((year, index) => ({ year, key: index }));
     }
   },
   mounted() {
     this.handleSearch()
     this.instructorId = getLocalStorage('instructorId') || '5101603'
     get(`/office-service/group/list/${this.instructorId}`).then((res) => {
-      this.TuanTi = res.data
-      console.log("🚀  this.TuanTi:", this.TuanTi)
+      this.TuanTi = this.extractUniqueYears(res.data)
     })
   }
 }

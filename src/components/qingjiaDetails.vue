@@ -32,48 +32,30 @@
       <span class="label">附件：</span>
       <a :href="leaveDetails.attach" class="value">下载附件</a>
     </div>
-    <div class="row">
-      <span class="label">已提交：</span>
-      <span class="value">{{ leaveDetails.time }}</span>
-    </div>
-    <div class="row">
-      <span class="label">已通过：</span>
-      <span class="value">{{ leaveDetails.changeTime }}</span>
+    <div class="row" style="display: flex; justify-content: center">
+      <div style="width: 200px;">
+        <a-steps direction="vertical" size="small" :current="1">
+          <a-step title="已提交：" :description="leaveDetails.time" />
+          <a-step title="已通过：" :description="leaveDetails.changeTime" />
+        </a-steps>
+      </div>
     </div>
     <div class="row">
       <span class="label">审批人：</span>
       <span class="value">{{ leaveDetails.professorName }}</span>
     </div>
-    <div class="row">
-      <span class="label">拒绝：</span>
-      <span class="value">{{ leaveDetails.refuseReason }}</span>
+    <div class="row" v-if="$route.query.status == 0">
+      <a-button type="danger" @click="jujue">拒绝</a-button>
     </div>
-    <div class="row">
-      <span class="label">同意：</span>
-      <span class="value">{{ leaveDetails.name }}</span>
+    <div class="row" v-if="$route.query.status == 0">
+      <a-button @ckick="tongyi">同意</a-button>
     </div>
   </div>
 </template>
 
-<style>
-.leave-details {
-  margin: 20px;
-}
-
-.row {
-  margin-bottom: 10px;
-}
-
-.label {
-  font-weight: bold;
-}
-
-.value {
-  margin-left: 10px;
-}
-</style>
-
 <script>
+import { get, post, put } from '../utils/request';
+
 export default {
   data() {
     return {
@@ -98,6 +80,48 @@ export default {
         attach: "http://powernod.com/u/7efe33a189577710"
       }
     };
+  },
+  methods: {
+    jujue() {
+      put('/leave-service/instructor/leaverecord/update', {
+        "noteId": this.$route.query.noteId,
+        "id": this.$route.query.professorId,
+        "refuseReason": this.$route.query.reason,
+        "status": "-1",
+        "name": this.$route.query.professorName,
+      }).then(() => {
+        that.handleSearch()
+      })
+    },
+    tongyi() {
+      put('/leave-service/instructor/leaverecord/update', {
+        "noteId": this.$route.query.noteId,
+        "id": this.$route.query.professorId,
+        "refuseReason": this.$route.query.reason,
+        "status": "1",
+        "name": this.$route.query.professorName,
+      }).then(() => {
+        that.handleSearch()
+      })
+    }
   }
 };
 </script>
+
+<style lang="scss" scoped>
+.leave-details {
+  margin: 20px;
+}
+
+.row {
+  margin-bottom: 20px;
+}
+
+.label {
+  font-weight: bold;
+}
+
+.value {
+  margin-left: 10px;
+}
+</style>

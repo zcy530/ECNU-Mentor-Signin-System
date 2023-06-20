@@ -34,7 +34,7 @@ export default {
 
 <style lang="scss" scoped>
 .wrapper-header {
-  padding: 0 230px;
+  padding-right: 180px;
   width: 100%;
   height: 100%;
   display: flex;
