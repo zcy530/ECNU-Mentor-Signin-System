@@ -1,8 +1,25 @@
 <template>
     <div class="wrapper">
-        <h2>
-            {{ TextDecoder || '无内容' }}
-        </h2>
+        <table>
+            <tr>
+                <th>学号</th>
+                <th>组别</th>
+                <th>姓名</th>
+                <th>院系</th>
+                <th>班级</th>
+                <th>专业</th>
+                <th>入学年份</th>
+            </tr>
+            <tr>
+                <td>{{ TextDecoder.studentId }}</td>
+                <td>{{ TextDecoder.groupId }}</td>
+                <td>{{ TextDecoder.stuname }}</td>
+                <td>{{ TextDecoder.department }}</td>
+                <td>{{ TextDecoder.classes }}</td>
+                <td>{{ TextDecoder.major }}</td>
+                <td>{{ TextDecoder.year }}</td>
+            </tr>
+        </table>
         <div class="course-table">
             <a-table :columns="columns" :data-source="courseData" row-key="studentId" class="custom-table">
                 <span slot="time_action" slot-scope="text, record">
@@ -62,7 +79,7 @@ export default {
                     dataIndex: 'weekday',
                     width: 200,
                     key: 'weekday3',
-                    customRender: (text,record) => {
+                    customRender: (text, record) => {
                         if (text === 'Wednesday') {
                             return <div class="course-cell"><div>{record.name}</div><div><span>迟到次数:</span>{record.late}次</div><div><span>请假次数:</span>{record.leave}次</div><div><span>缺勤次数:</span>{record.absent}次</div></div>;
                         } else {
@@ -98,14 +115,14 @@ export default {
                 },
             ],
             courseData: [
-                
+
             ],
             instructorId: ''
         };
     },
     mounted() {
         this.instructorId = getLocalStorage('instructorId') || '5101603'
-        get(`/office-service/student/info?studentId=${this.instructorId}`).then((res) => {
+        get(`/office-service/student/info?studentId=${this.$route.query.studentId}`).then((res) => {
             this.TextDecoder = res.data
         })
         // get(`/account-service/account/studentId/exception?studentId=${this.$route.query.studentId}&term=${this.$route.query.term}`).then((res) => {
@@ -138,5 +155,42 @@ export default {
     color: white;
     text-align: center;
 }
+
+body {
+    background-color: #f7f7f7;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+table {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #ccc;
+    border-collapse: collapse;
+    box-shadow: 0 2px 4px rgba(146, 125, 221, 0.1);
+}
+
+th,
+td {
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background-color: #f2f2f2;
+    color: rgb(68, 66, 66);
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
 </style>
   

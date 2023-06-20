@@ -1,38 +1,40 @@
 <template>
   <div class="leave-details">
-    <div class="row">
-      <span class="label">发起人：</span>
-      <span class="value">{{ leaveDetails.studentName }}</span>
+    <div class="row-wraper">
+      <div class="row">
+        <span class="label">发起人：</span>
+        <span class="value">{{ leaveDetails.studentName }}</span>
+      </div>
+      <div class="row">
+        <span class="label">创建时间：</span>
+        <span class="value">{{ leaveDetails.changeTime }}</span>
+      </div>
+      <div class="row">
+        <span class="label">请假时间：</span>
+        <span class="value">{{ leaveDetails.week }}</span>
+      </div>
+      <div class="row">
+        <span class="label">请假课程：</span>
+        <span class="value">{{ leaveDetails.courseName }}</span>
+      </div>
+      <div class="row">
+        <span class="label">开课教师：</span>
+        <span class="value">{{ leaveDetails.professorName }}</span>
+      </div>
+      <div class="row">
+        <span class="label">课程 ID：</span>
+        <span class="value">{{ leaveDetails.courseId }}</span>
+      </div>
+      <div class="row">
+        <span class="label">理由：</span>
+        <span class="value">{{ leaveDetails.reason }}</span>
+      </div>
+      <div class="row">
+        <span class="label">附件：</span>
+        <a :href="leaveDetails.attach" class="value">下载附件</a>
+      </div>
     </div>
     <div class="row">
-      <span class="label">创建时间：</span>
-      <span class="value">{{ leaveDetails.changeTime }}</span>
-    </div>
-    <div class="row">
-      <span class="label">请假时间：</span>
-      <span class="value">{{ leaveDetails.week }}</span>
-    </div>
-    <div class="row">
-      <span class="label">请假课程：</span>
-      <span class="value">{{ leaveDetails.courseName }}</span>
-    </div>
-    <div class="row">
-      <span class="label">开课教师：</span>
-      <span class="value">{{ leaveDetails.professorName }}</span>
-    </div>
-    <div class="row">
-      <span class="label">课程 ID：</span>
-      <span class="value">{{ leaveDetails.courseId }}</span>
-    </div>
-    <div class="row">
-      <span class="label">理由：</span>
-      <span class="value">{{ leaveDetails.reason }}</span>
-    </div>
-    <div class="row">
-      <span class="label">附件：</span>
-      <a :href="leaveDetails.attach" class="value">下载附件</a>
-    </div>
-    <div class="row" style="display: flex; justify-content: center">
       <div style="width: 200px;">
         <a-steps direction="vertical" size="small" :current="1">
           <a-step title="已提交：" :description="leaveDetails.time" />
@@ -111,10 +113,28 @@ export default {
 <style lang="scss" scoped>
 .leave-details {
   margin: 20px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 .row {
+  width: 350px;
   margin-bottom: 20px;
+  text-align: left;
+}
+
+.row-wraper {
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
 .label {
@@ -123,5 +143,4 @@ export default {
 
 .value {
   margin-left: 10px;
-}
-</style>
+}</style>

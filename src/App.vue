@@ -44,7 +44,7 @@ export default {
 }
 
 .ant-menu-item-selected {
-  color: rgba(0, 20, 183, 1) !important;
+  color: #fff !important;
 }
 
 .ant-menu-vertical .ant-menu-item::after, .ant-menu-vertical-left .ant-menu-item::after, .ant-menu-vertical-right .ant-menu-item::after, .ant-menu-inline .ant-menu-item::after {
@@ -59,6 +59,7 @@ export default {
     content: '';
 }
 .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
-    background-color: #d5d3ee !important;
+    background-color: #3875f2 !important;
+    border-radius: 10px;
 }
 </style>

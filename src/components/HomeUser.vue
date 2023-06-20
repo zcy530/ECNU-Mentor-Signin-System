@@ -32,7 +32,8 @@
       <div class="title">我管理的团体</div>
     </div>
     <ul class="group-list">
-      <li v-for="item in tuanList"><span style="color: #879aff">部门:</span> {{ item.department }} <span style="color: #879aff">学院:</span> {{ item.major }}<span>年份:</span> {{ item.year }}</li>
+      <li v-for="item in tuanList"><span style="color: #879aff">部门:</span> {{ item.department }} <span
+          style="color: #879aff">学院:</span> {{ item.major }}<span style="color: #879aff">年份:</span> {{ item.year }}</li>
     </ul>
   </div>
 </template>
@@ -91,7 +92,7 @@ export default {
 
 .table {
   margin-top: 20px;
-  width: 800px;
+  width: 400px;
 }
 
 table {
@@ -102,6 +103,7 @@ table {
 table td {
   padding: 10px;
   border-bottom: 1px solid #ccc;
+  text-align: left;
 }
 
 table tr:last-child td {
@@ -110,13 +112,15 @@ table tr:last-child td {
 
 table td:first-child {
   font-weight: bold;
-  width: 120px;
+  width: 245px;
+  text-align: center;
 }
 
 .title {
-  font-size: 18px;
+  font-size: 25px;
   font-weight: bold;
   margin-top: 50px;
+  margin-bottom: 25px;
 }
 
 .group-list {

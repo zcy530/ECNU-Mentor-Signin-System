@@ -5,7 +5,7 @@
         </a-layout-header>
         <a-layout>
             <a-layout-sider width="200" style="background: #fff">
-                <a-menu mode="inline" :default-selected-keys="[$route.path]" :default-open-keys="[$route.path]"
+                <a-menu theme="dark" mode="inline" :default-selected-keys="[$route.path]" :default-open-keys="[$route.path]"
                     :style="{ height: '100%', borderRight: 0 }">
                     <a-menu-item key="/Home/HomeUser" @click="routePath('/Home/HomeUser')">
                         个人中心

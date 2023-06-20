@@ -8,9 +8,9 @@
       </a-select>
 
 
-      <a-select v-model="selectedYear" style="width: 120px;" placeholder="请选择">
-        <a-select-option v-for="item in TuanTi" :value="item.year">
-          {{ item.year }}
+      <a-select v-model="selectedYear" style="width: 260px;" placeholder="请选择">
+        <a-select-option v-for="item in TuanTi" :value="item.group_id" :key="item.group_id">
+          {{ item.department + '\n' + item.major + '\n'+item.classes }}
         </a-select-option>
       </a-select>
 
@@ -124,7 +124,7 @@ export default {
     this.handleSearch()
     this.instructorId = getLocalStorage('instructorId') || '5101603'
     get(`/office-service/group/list/${this.instructorId}`).then((res) => {
-      this.TuanTi = this.extractUniqueYears(res.data)
+      this.TuanTi = res.data
     })
   }
 }
