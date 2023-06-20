@@ -2,26 +2,32 @@
   <div class="wrapper-header">
     <div class="title">ECNU签到系统-{{ title[0] }}</div>
     <div class="user-info">
-      <i class="fas fa-user"></i>
+      <a-icon type="user" />
       <span>{{ name }}</span>
+      <span @click="layout"><a href="">退出登录</a></span>
     </div>
   </div>
 </template>
 
 <script>
+import { getLocalStorage, delLocalStorage } from '@/utils/Obj'
 export default {
   name: 'App',
   data() {
     return {
-      name: 'xxxx',
+      name: '',
       title: ['辅导员端', '学生端'],
     };
   },
   methods: {
-
+    layout() {
+      delLocalStorage('token')
+      delLocalStorage('instructorId')
+      window.location.reload()
+    }
   },
   mounted() {
-
+    this.name = getLocalStorage('instructorId') || 'xxxxxxxxxx'
   }
 }
 </script>

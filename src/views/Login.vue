@@ -45,6 +45,7 @@
   
 <script>
 import { post } from '../utils/request'
+import { setLocalStorage } from '@/utils/Obj.js';
 
 const formItemLayout = {
     labelCol: { span: 4 },
@@ -84,9 +85,15 @@ export default {
                         id: values.userName,
                         password: values.password,
                         type: this.option
-                    }).then(() => {
-                        this.$message.success('登录成功!')
-                        this.$router.push('/Home/HomeUser')
+                    }).then((res) => {
+                        if (res.data.accessToken) {
+                            setLocalStorage('token', res.data.accessToken)
+                            setLocalStorage('instructorId', values.userName)
+                            this.$message.success('登录成功!')
+                            this.$router.push('/Home/HomeUser')
+                        } else {
+                            Promise.reject()
+                        }
                     }).catch((e) => {
                         this.$message.error(e)
                     })

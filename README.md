@@ -1,4 +1,3 @@
-# audio_priject
 
 ## Project setup
 ```

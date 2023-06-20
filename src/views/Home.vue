@@ -5,15 +5,15 @@
         </a-layout-header>
         <a-layout>
             <a-layout-sider width="200" style="background: #fff">
-                <a-menu mode="inline" :default-selected-keys="['1']" :default-open-keys="['1']"
+                <a-menu mode="inline" :default-selected-keys="[$route.path]" :default-open-keys="[$route.path]"
                     :style="{ height: '100%', borderRight: 0 }">
-                    <a-menu-item key="1" @click="$router.push('/Home/HomeUser')">
+                    <a-menu-item key="/Home/HomeUser" @click="routePath('/Home/HomeUser')">
                         个人中心
                     </a-menu-item>
-                    <a-menu-item key="2" @click="$router.push('/Home/qingjia')">
+                    <a-menu-item key="/Home/qingjia" @click="routePath('/Home/qingjia')">
                         请假消息
                     </a-menu-item>
-                    <a-menu-item key="3" @click="$router.push('/Home/Center')">
+                    <a-menu-item key="/Home/Center" @click="routePath('/Home/Center')">
                         统计中心
                     </a-menu-item>
                 </a-menu>
@@ -38,6 +38,14 @@ export default {
             collapsed: false,
         };
     },
+    methods: {
+        routePath(path) {
+            this.$router.push(path)
+        }
+    },
+    mounted() {
+        
+    }
 };
 </script>
   
