@@ -5,17 +5,15 @@
         <a-row>
           <a-col :span="6">
             <a-select v-model="selectedOption1" style="width: 220px;" placeholder="请选择">
-              <a-select-option value="2023春季学期">2023春季学期</a-select-option>
-              <a-select-option value="2023暑季学期">2023暑季学期</a-select-option>
-              <a-select-option value="2023夏季学期">2023夏季学期</a-select-option>
+              <a-select-option value="2023春季学期">2023年春季学期</a-select-option>
+              <a-select-option value="2023暑季学期">2023年暑季学期</a-select-option>
+              <a-select-option value="2023夏季学期">2023年夏季学期</a-select-option>
             </a-select>
           </a-col>
           <a-col :span="6">
             <a-select v-model="selectedOption2" style="width: 120px;" placeholder="请选择">
-              <a-select-option v-for="item in TuanTi"
-                :value="item.group_id"
-                :key="item.group_id">
-                {{ item.group_id }}
+              <a-select-option v-for="item in TuanTi" :value="item.year">
+                {{ item.year }}
               </a-select-option>
             </a-select>
           </a-col>
@@ -35,7 +33,7 @@
           已审核
         </a-button>
         <a-button :type="selectedOption === 2 ? 'primary' : ''" @click="handleOptionClick(2)">
-          未审
+          未通过
         </a-button>
       </a-button-group>
     </div>
@@ -63,7 +61,7 @@ export default {
   data() {
     return {
       selectedOption1: '2023年春季学期',
-      selectedOption2: 2020,
+      selectedOption2: 124,
       username: undefined,
       dataSource: [], // Your table data source
       columns: [], // Your table columns definition
@@ -72,82 +70,94 @@ export default {
       selectedOption: 0, // 默认选中全部
       columns: [
         {
-          title: "Note ID",
+          title: "笔记 ID",
+          width: 90,
           dataIndex: "noteId",
           key: "noteId"
         },
         {
-          title: "Student ID",
+          title: "学生 ID",
+          width: 90,
           dataIndex: "studentId",
           key: "studentId"
         },
         {
-          title: "Student Name",
+          title: "学生名字",
+          width: 90,
           dataIndex: "studentName",
           key: "studentName"
         },
         {
-          title: "Course ID",
+          title: "课程 ID",
+          width: 90,
           dataIndex: "courseId",
           key: "courseId"
         },
         {
-          title: "Week",
+          title: "星期",
+          width: 90,
           dataIndex: "week",
           key: "week"
         },
         {
-          title: "Reason",
+          title: "理由",
+          width: 90,
           dataIndex: "reason",
           key: "reason"
         },
         {
-          title: "Time",
+          title: "时间",
+          width: 90,
           dataIndex: "time",
           key: "time"
         },
         {
-          title: "Status",
+          title: "状态",
           dataIndex: "status",
           key: "status",
           width: 90,
           customRender: (text) => {
-            if (text === 0) {
+            if (text == -1) {
               return <span style="color: red;">未通过</span>;
-            } else if (text === 1) {
+            } else if (text == 1) {
               return <span style="color: green;">已通过</span>;
             } else {
-              return text;
+              return <span style="color: yellow;">未审核</span>;
             }
           }
         },
         {
-          title: "Term",
+          title: "学期",
           dataIndex: "term",
+          width: 90,
           key: "term"
         },
         {
-          title: "Professor ID",
+          title: "辅导员 ID",
           dataIndex: "professorId",
+          width: 90,
           key: "professorId"
         },
         {
-          title: "Professor Name",
+          title: "辅导员",
+          width: 90,
           dataIndex: "professorName",
           key: "professorName"
         },
         {
-          title: "Course Name",
+          title: "课程 Name",
+          width: 90,
           dataIndex: "courseName",
           key: "courseName"
         },
         {
-          title: "Attach",
+          title: "图片",
           dataIndex: 'action',
+          width: 90,
           scopedSlots: { customRender: 'action1' }
         },
         {
-          title: "Action",
+          title: "操作",
           key: "action",
           key: 'actionButton',
           width: 250,
@@ -188,7 +198,7 @@ export default {
             "noteId": record.noteId,
             "id": record.professorId,
             "refuseReason": record.reason,
-            "status": "-1",
+            "status": 1,
             "name": record.professorName,
           }).then(() => {
             that.handleSearch()
@@ -199,7 +209,7 @@ export default {
             "noteId": record.noteId,
             "id": record.professorId,
             "refuseReason": record.reason,
-            "status": "-1",
+            "status": -1,
             "name": record.professorName,
           }).then(() => {
             that.handleSearch()
@@ -243,7 +253,7 @@ export default {
     extractUniqueYears(data) {
       const years = [];
       for (let i = 0; i < data.length; i++) {
-        const year = data[i].year;
+        const year = data[i].group_id;
         if (!years.includes(year)) {
           years.push(year);
         }

@@ -2,9 +2,9 @@
   <div class="wrapper">
     <div class="top">
       <a-select v-model="selectedSemester" style="width: 120px;" placeholder="请选择">
-        <a-select-option value="2023春季学期">2023春季学期</a-select-option>
-        <a-select-option value="2023暑季学期">2023暑季学期</a-select-option>
-        <a-select-option value="2023夏季学期">2023夏季学期</a-select-option>
+        <a-select-option value="2023春季学期">2023年春季学期</a-select-option>
+        <a-select-option value="2023暑季学期">2023年暑季学期</a-select-option>
+        <a-select-option value="2023夏季学期">2023年夏季学期</a-select-option>
       </a-select>
 
 
@@ -40,7 +40,7 @@ export default {
     return {
       TuanTi: [],
       instructorId: '',
-      selectedYear: 2020,
+      selectedYear: 124,
       selectedSemester: '2023年春季学期',
       searchCount: null,
       dataSource: [],
@@ -99,7 +99,7 @@ export default {
       });
     },
     handleSearch() {
-      get(`/account-service/account/exception/times?instructorId=${5101603}&term=${'2023年春季学期'}&groupId=${124}`).then((res) => {
+      get(`/account-service/account/exception/times?instructorId=${this.instructorId}&term=${this.selectedSemester}&groupId=${this.selectedYear}`).then((res) => {
         this.dataSource = res.data
         this.dataSource1 = this.dataSource
       })
@@ -109,16 +109,10 @@ export default {
         this.dataSource1 = this.filteredData
       }
     },
-    querydata() {
-      get(`/account-service/account/exception/times?instructorId=${this.selectedYear.split('&')[3]}&term=${this.selectedSemester}&groupId=${this.selectedYear.split('&')[2]}`).then((res) => {
-        this.dataSource = res.data
-        this.dataSource1 = this.dataSource
-      })
-    },
     extractUniqueYears(data) {
       const years = [];
       for (let i = 0; i < data.length; i++) {
-        const year = data[i].year;
+        const year = data[i].group_id;
         if (!years.includes(year)) {
           years.push(year);
         }

@@ -16,20 +16,24 @@
           <td>密码:</td>
           <td>{{ gender }}</td>
         </tr>
-        <!-- <tr>
+        <tr>
+          <td>性别:</td>
+          <td>女</td>
+        </tr>
+        <tr>
           <td>手机号:</td>
-          <td>{{ phoneNumber }}</td>
+          <td>15155556565</td>
         </tr>
         <tr>
           <td>邮箱:</td>
-          <td>{{ email }}</td>
-        </tr> -->
+          <td>3123123@qq.com</td>
+        </tr>
       </table>
       <div class="title">我管理的团体</div>
-      <ul class="group-list">
-        <li v-for="item in tuanList"><span style="color: #879aff">id:</span> {{ item.instructor_id }} <span style="color: #879aff">部门:</span> {{ item.department }} <span style="color: #879aff">学院:</span> {{ item.major }} <span style="color: #879aff">团id:</span> {{ item.group_id }} : {{ item.major }} <span>年份:</span> {{ item.year }}</li>
-      </ul>
     </div>
+    <ul class="group-list">
+      <li v-for="item in tuanList"><span style="color: #879aff">部门:</span> {{ item.department }} <span style="color: #879aff">学院:</span> {{ item.major }}<span>年份:</span> {{ item.year }}</li>
+    </ul>
   </div>
 </template>
   
@@ -71,6 +75,9 @@ export default {
   
 <style lang="scss" scoped>
 .wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
   height: 100%;
 }
@@ -84,6 +91,7 @@ export default {
 
 .table {
   margin-top: 20px;
+  width: 800px;
 }
 
 table {

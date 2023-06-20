@@ -2,7 +2,7 @@
     <div id="app">
         <div class="wrapper">
             <div class="top-nav">
-                {{ loginType[option] }}
+                ECNU签到系统-辅导员端
             </div>
             <div class="bottom">
                 <div class="container">
@@ -32,10 +32,10 @@
                                 Log in
                             </a-button>
                         </a-form-item>
-                        <div class="btn-wrapper">
+                        <!-- <div class="btn-wrapper">
                             <a-button :class="{ active: option === 0 }" @click="changeBtn(0)">教师</a-button>
                             <a-button :class="{ active: option === 1 }" @click="changeBtn(1)">管理员</a-button>
-                        </div>
+                        </div> -->
                     </a-form>
                 </div>
             </div>
